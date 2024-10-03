@@ -1,194 +1,162 @@
-Data Types in Golang
-What is a Data Type?
-A data type is a classification of data, describing how the data is used and stored. Each data type has its own set of operations that can be performed on it.
+Data types in golang : 
 
-Basic Data Types:
-String: A sequence of characters used to represent text.
+Data type is classification made on type of data.
+String -> sequence of characters and is used to represent text.
+Numbers which consists of integers and float :
+Integers -> Numbers without any decimal part {Whole numbers , 2, 88, 900, -100}
+Float -> Numbers with decimal part {3.7, -0.9}
+Boolean -> Just 2 values : true and false {0 and 1 are not permitted in go}
+Array -> Like list or sequence of element with single data type. {[3, 6, 8, 9] [true, false, true] ["foo", "bar"]}
+Slices -> represents a flexible array-like datatype but they also provide more control over memory allocation.
+Maps -> collection of key-value pairs. {"x" -> 30 (map of string to integer)}
 
-Example: "Hello World"
-Numbers: Consists of integers and floating-point numbers.
+Why are datatypes needed?
+1. categories a set of related values
+2. describes the operation that can be done on them.
+3. define the way data is stored in the memory.
 
-Integers: Numbers without a decimal part.
-Example: 2, 88, 900, -100
-Float: Numbers with a decimal part.
-Example: 3.7, -0.9
-Boolean: Represents one of two values: true or false.
-
-Note: Go does not permit 0 and 1 for Boolean values.
-Example: true, false
-Array: A fixed-size sequence of elements of a single data type.
-
-Example: [3, 6, 8, 9], [true, false, true], ["foo", "bar"]
-Slices: A flexible, array-like data type that provides more control over memory allocation.
-
-Example: []int{3, 5, 7}
-Maps: A collection of key-value pairs.
-
-Example: map[string]int{"x": 30} (A map of strings to integers)
-Why are Data Types Needed?
-Categorize a set of related values.
-Describe the operations that can be performed on them.
-Define how the data is stored in memory.
-Memory Allocation:
-Each data type requires a certain amount of memory for storage:
-
-int: 4 or 8 bytes (depending on architecture)
-bool: 1 byte
+Memory allocation : whenever we want to store any data in a code a certain amount of memory is allocated to that.
+int : 4 or 8 bytes
+Boolean: 1 bytes
 string: 16 bytes
-float: 4 or 8 bytes
-Static and Dynamic Typing:
-Static Typed Languages:
-Definition: Languages in which the compiler enforces correct usage of data types at compile time.
-Example: Adding two numbers but providing incorrect types (e.g., "one" + 1) will result in a compile-time error.
-Examples: C, C++, Java.
-Advantages:
-Better performance.
-Improved data integrity.
-Bugs can often be caught by the compiler.
-Dynamic Typed Languages:
-Definition: Languages in which the data types are not enforced by the compiler.
+float: 4 or 8 bytes 
+---------------------------------------------
+Static and Dynamic typed language:
+Static typed language: Languages are said static typed when compiler throws error when we use datatypes incorrectly.{adding 2 numbers and providing 1 and one as input to the addition function throws compiler error}
+ex: C, C++, Java.
 
-Example: In dynamically typed languages, adding "one" + 1 would not throw a compiler error.
+static typed have better performance, data integrity, bugs can be caught often by compiler.
 
-Examples: Python, JavaScript, PHP.
-Advantages:
 
-Faster to write code.
-More flexible.
-Easier to learn, shorter learning curve.
-Golang's Typing System:
-Go is a fast, statically typed language. It requires data types to be either explicitly declared or inferred by the compiler.
+Dynamically typed language: when datatypes are not enforced by the compiler.{adding 2 numbers and providing 1 and one as input to the addition function does not throws compiler error}
+ex: Python, JavaScript, PHP.
 
-Variables in Golang:
-Syntax:
-A variable is a reference to a value. Here's how to declare and assign values to variables:
+dynamically typed is faster to write code, less rigid, shorter learning curve.
 
-go
-Copy code
+Which one is Golang?
+Golang is a fast statically typed language and has a concept of types that are either explicitly declared by programmer or implicitly inferred by compiler.
+----------------------------------------------
+Variables: These are reference to the values.
+Keywords : reserved words that have special meaning to the compiler.
+
+Syntax for declaring and assigning value to a variable:
 var <variable_name> <data_type> = <value>
-Examples:
-
-go
-Copy code
+ex: 
 var s string = "Hello world"
 var i int = 43
 var b bool = true
 var f float64 = 77.04
-Shorthand Variable Declaration:
-You can declare and assign a variable in a single line using shorthand syntax:
 
-go
-Copy code
-s := "Hello world"
-Implicitly, Go assigns the correct data type based on the value.
+\n -> newline character {as fmt.Print() method does not print 2 variables on different lines ("\n")}
+fmt.Println() -> prints the variables to the new line by default.
 
-Multiple Variable Declaration:
-You can declare multiple variables on the same line:
+Printf -> Format specifiers:
+format specifiers tells the golang how to format different kinds of datatypes.
+%v -> default format, %d-> integer, %T-> type of value, %c-> used for character, %t-> true or false, %f-> floating point values
+------------------------------------------------------------------------------
 
-go
-Copy code
-var s, p string = "hi", "hello"
-You can also declare multiple variables within a block:
+Variable declaration :
+In go we can also first declare a variable and afterwards assign value to it 
+ex :
+var user string
+user = "harry"
 
-go
-Copy code
-var (
-  s string = "foo"
-  i int = 5
-)
-Variable Scope:
-In Go, variable scope is defined by the block in which the variable is declared:
+We cannot assign an inapproprite value to a particular variable such as assigning string as 123, compiler will throw an error.
 
-go
-Copy code
-func main() {
-    // outer block
-    func inner() {
-        // inner block
-    }
+Shorthand way of declaring variables:
+variables of same type can be declared on same line and also can be assigned values on the same line.
+ex : var s,p string = "hi", "hello"
+ 
+var(
+s string = "foo"
+i int = 5) 
+
+Short variable decleration: 
+s:="Hello world"
+Implicitly go have assigned string type to variable s.
+-----------------------------------------------------
+Variable scope : 
+In golang variable scope is defined using block-
+main(){
+	inner(){
+	}
 }
-Variables in inner blocks can access variables from outer blocks.
-Variables in outer blocks cannot access variables from inner blocks.
-Local vs Global Variables:
-Local Variables: Declared inside a block. These are not accessible outside the block.
-Global Variables: Declared outside a block. These are accessible from any part of the program.
-Zero Value in Golang:
-When a variable is declared without an initial value, Go assigns it a zero value based on the data type:
 
-bool: false
-int: 0
-float: 0.0
-string: ""
-pointers: nil
-Input Handling with Scanner Function:
-The fmt.Scanf function reads formatted input:
+Inner blocks can access variables declared within outer blocks.
+But 
+Outer blocks cannot access variables that are declared in inner block.
+-----------------------------------------------------------------------
+Local vs Global Variables: 
+1.Local variables : declared inside a block. These are not accessible outside the block.
+2.Global variables: declared outside a block. These are accessible from any part of the program. 
 
-go
-Copy code
-fmt.Scanf("%format_specifier", &variable)
-Examples:
+Zero value in golang :
+If a variable is declared without assigning any value then it is given default value known as zero value.
+zero value depends on datatype of the variable.
+bool-> false
+int-> 0
+float-> 0.0
+string-> ""
+pointers-> null
+-----------------------------------------------------------------------
 
-go
-Copy code
+Scanner function :
+fmt.Scanf("%format_specifier ", &variable)
 fmt.Scanf("%s", &name)
+
+fmt.Scanf return 2 values count and err {count -> the no. of args that the function writes to, err-> any error thrown during the execution of the function}
+
 count, err := fmt.Scanf("%s %d", &a, &b)
-count: Number of arguments written to.
-err: Any errors during execution.
-Type Information:
-1. %T Format Specifier:
-To find the data type of a variable, use %T:
+------------------------------------------------------------------------
 
-go
-Copy code
-fmt.Printf("variable = %v is of type %T\n", grades, grades)
-2. Using reflect Package:
-To find the type of a variable at runtime:
+Finding datatype of a variable:
 
-go
-Copy code
-fmt.Printf("Type : %v\n", reflect.TypeOf(100))
-Type Conversion:
-Typecasting is the process of converting one data type into another:
+1. %T format specifier: 
+   fmt.Printf("variable grade = %v is of type %T\n", grades, grades)
+2. import package "reflect"
+   fmt.Printf("Type : %v\n", reflect.TypeOf(100))
+-----------------------------------------------------------------------
 
-go
-Copy code
+Converting one datatype to another :
+The process of converting one datatype to another is known as typecasting.
+Datatype can be converted in another datatype but this does not guarantee that the value will remain intact.
+ex:
 var i int = 90
 var f float64 = float64(i)
-String Conversion:
-Go provides the strconv package to convert between strings and other data types.
+----------------------------------------------------------
 
-strconv.Itoa(): Converts an int to a string.
-
-go
-Copy code
+String conversion package (strconv):
+1. Itoa()-> converts int to string and returns one value - string formed with given integer.
+ex : 
 var i int = 42
 var s string = strconv.Itoa(i)
-fmt.Printf("%q", s)  // Output: "42"
-strconv.Atoi(): Converts a string to an int.
+fmt.Printf("%q", s)
+output -> "42"
 
-go
-Copy code
-var s string = "42"
-var i int, err = strconv.Atoi(s)
+2. Atoi()-> converts string to int and returns two values - the corresponding int, error if any.
+--------------------------------------------------------------
 Constants:
-A constant is a variable whose value cannot be changed after initialization.
-
-Syntax:
-go
-Copy code
+these are the variable whose value once initialized cannot be modified again.
+syntax:
 const <const_name> <data_type> = <value>
-Examples:
 
-go
-Copy code
-const age = 12
-const h_name, h_age = "harry", 36
-Typed vs Untyped Constants:
-Untyped Constants: Do not have an explicit type unless assigned one.
-Typed Constants: Have a specific type assigned during declaration.
-Example:
+There are 2 types of constants:
+1. Typed  
+2. Untyped
+constants are untyped unless explicitly given a type at declaration. allows much more flexibility.
+ex: const age = 12, const h_name, h_age = "harry", 36
 
-go
-Copy code
-const age int = 12
-Note: Constants must be initialized at the time of declaration. You cannot declare a constant and assign its value later.
+constants are typed when we explicitly specify the data type in the declaration. flexibility is lost.
+ex: const age int = 12
+
+we can't first declare a const a constant and then initialize a value to it afterwards.
+So we have to declare and assign value at the same time.
+--------------------------------------------------------------
+
+
+
+
+
+
+
+
