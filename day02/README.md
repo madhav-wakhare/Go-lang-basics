@@ -1,5 +1,5 @@
 Data types in golang : 
-
+ 
 Data type is classification made on type of data.
 String -> sequence of characters and is used to represent text.
 Numbers which consists of integers and float :
