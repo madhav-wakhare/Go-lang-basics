@@ -20,7 +20,8 @@ int : 4 or 8 bytes
 Boolean: 1 bytes
 string: 16 bytes
 float: 4 or 8 bytes 
----------------------------------------------
+
+
 Static and Dynamic typed language:
 Static typed language: Languages are said static typed when compiler throws error when we use datatypes incorrectly.{adding 2 numbers and providing 1 and one as input to the addition function throws compiler error}
 ex: C, C++, Java.
@@ -35,7 +36,8 @@ dynamically typed is faster to write code, less rigid, shorter learning curve.
 
 Which one is Golang?
 Golang is a fast statically typed language and has a concept of types that are either explicitly declared by programmer or implicitly inferred by compiler.
-----------------------------------------------
+
+
 Variables: These are reference to the values.
 Keywords : reserved words that have special meaning to the compiler.
 
@@ -53,7 +55,7 @@ fmt.Println() -> prints the variables to the new line by default.
 Printf -> Format specifiers:
 format specifiers tells the golang how to format different kinds of datatypes.
 %v -> default format, %d-> integer, %T-> type of value, %c-> used for character, %t-> true or false, %f-> floating point values
-------------------------------------------------------------------------------
+
 
 Variable declaration :
 In go we can also first declare a variable and afterwards assign value to it 
@@ -74,7 +76,7 @@ i int = 5)
 Short variable decleration: 
 s:="Hello world"
 Implicitly go have assigned string type to variable s.
------------------------------------------------------
+
 Variable scope : 
 In golang variable scope is defined using block-
 main(){
@@ -85,7 +87,8 @@ main(){
 Inner blocks can access variables declared within outer blocks.
 But 
 Outer blocks cannot access variables that are declared in inner block.
------------------------------------------------------------------------
+
+
 Local vs Global Variables: 
 1.Local variables : declared inside a block. These are not accessible outside the block.
 2.Global variables: declared outside a block. These are accessible from any part of the program. 
@@ -98,7 +101,6 @@ int-> 0
 float-> 0.0
 string-> ""
 pointers-> null
------------------------------------------------------------------------
 
 Scanner function :
 fmt.Scanf("%format_specifier ", &variable)
@@ -107,7 +109,7 @@ fmt.Scanf("%s", &name)
 fmt.Scanf return 2 values count and err {count -> the no. of args that the function writes to, err-> any error thrown during the execution of the function}
 
 count, err := fmt.Scanf("%s %d", &a, &b)
-------------------------------------------------------------------------
+
 
 Finding datatype of a variable:
 
@@ -115,7 +117,7 @@ Finding datatype of a variable:
    fmt.Printf("variable grade = %v is of type %T\n", grades, grades)
 2. import package "reflect"
    fmt.Printf("Type : %v\n", reflect.TypeOf(100))
------------------------------------------------------------------------
+
 
 Converting one datatype to another :
 The process of converting one datatype to another is known as typecasting.
@@ -123,7 +125,7 @@ Datatype can be converted in another datatype but this does not guarantee that t
 ex:
 var i int = 90
 var f float64 = float64(i)
-----------------------------------------------------------
+
 
 String conversion package (strconv):
 1. Itoa()-> converts int to string and returns one value - string formed with given integer.
@@ -134,7 +136,7 @@ fmt.Printf("%q", s)
 output -> "42"
 
 2. Atoi()-> converts string to int and returns two values - the corresponding int, error if any.
---------------------------------------------------------------
+
 Constants:
 these are the variable whose value once initialized cannot be modified again.
 syntax:
@@ -151,12 +153,5 @@ ex: const age int = 12
 
 we can't first declare a const a constant and then initialize a value to it afterwards.
 So we have to declare and assign value at the same time.
---------------------------------------------------------------
-
-
-
-
-
-
 
 
